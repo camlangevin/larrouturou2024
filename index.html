@@ -1,19 +1,61 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
 <meta charset="utf-8">
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
 <style>
-  div {
-    text-align: center;
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
-  embed {
+
+  #main-list {
+    text-align: center;
+    flex: 0 1 auto;
+  }
+
+  #pdfviewer-container {
+    flex: 1 1 auto;
+    display: flex;
+  }
+
+  embed#pdfviewer {
     width: 100%;
     height: 100%;
     display: inline-block;
   }
+
+  ul {
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+  }
 </style>
 
-<div><embed src="https://camlangevin.github.io/larrouturou2024/Profession%20de%20foi%20-%20second%20tour.pdf" type="application/pdf" /></div>
-<br/>
-<div><embed src="https://camlangevin.github.io/larrouturou2024/Pierre%20Larrouturou.pdf" type="application/pdf" /></div>
-<br/>
-<div><embed src="https://camlangevin.github.io/larrouturou2024/Taxer_les_profits_en_1933%2C_les_banquiers_disaient_que_Roosevelt.pdf" type="application/pdf" /></div>
+<script>
+$(function() {
+  $('a').on("click", function(e){
+    e.preventDefault();
+    var href = $(this).attr("href");
+    $("embed#pdfviewer").attr("src", href);
+  });
+});
+</script>
+</head>
+
+<body>
+<div id="main-list">
+  <ul>
+    <li><a href="https://camlangevin.github.io/larrouturou2024/Profession%20de%20foi%20-%20second%20tour.pdf">Profession de foi</a></li>
+    <li><a href="https://camlangevin.github.io/larrouturou2024/Pierre%20Larrouturou.pdf">Émile : En Essonne, Pierre Larrouturou déterminé à conjuguer ses principes en lois</a></li>
+    <li><a href="https://camlangevin.github.io/larrouturou2024/Taxer_les_profits_en_1933%2C_les_banquiers_disaient_que_Roosevelt.pdf">Taxer les profits : en 1933, les banquiers disaient que Roosevelt était fou</a></li>
+  </ul>
+</div>
+<div id="pdfviewer-container">
+  <embed id="pdfviewer" src="https://camlangevin.github.io/larrouturou2024/Profession%20de%20foi%20-%20second%20tour.pdf" type="application/pdf" />
+</div>
+</body>
+</html>
